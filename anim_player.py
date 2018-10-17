@@ -1,5 +1,4 @@
 import grating_animation
-#import grating_bubbles
 import grating_frame
 import pyglet
 import time
@@ -36,7 +35,6 @@ class PlayerWindow(pyglet.window.Window):
         #self.io.set_handler('on_rising', self.set_paused)
 
         pyglet.clock.schedule(self.io.read)
-
 
     def set_anim(self, ljid):
         if ljid == 4:
@@ -91,22 +89,15 @@ class PlayerWindow(pyglet.window.Window):
 
 
 def make_animations(width, height):
-    grating_animation.save_animation(width, height, 768, 0, 16, 'Sin0_new.ani')
-    #grating_animation.save_animation(width, height, 200, 45, 4, 'Sin45.ani')
-    #grating_animation.save_animation(width, height, 200, 90, 4, 'Sin90.ani')
-    #grating_animation.save_animation(
-    #    width, height, 200, 135, 4, 'Sin135.ani')
-    #grating_animation.save_animation(
-    #    width, height, 200, 180, 4, 'Sin180.ani')
-    #grating_animation.save_animation(
-    #    width, height, 200, 225, 4, 'Sin225.ani')
-    #grating_animation.save_animation(
-    #    width, height, 200, 270, 4, 'Sin270.ani')
-    #grating_animation.save_animation(
-    #    width, height, 200, 315, 4, 'Sin315.ani')
-    #grating_animation.save_animation(
-    #    width, height, 200, 360, 4, 'Sin360.ani')
-    #grating_bubbles.save_animation(width, height, 'bubbles.ani')
+    grating_animation.save_animation(width, height, 768, 0, 16, 'media\\Sin0.ani')
+    grating_animation.save_animation(width, height, 200, 45, 4, 'media\\Sin45.ani')
+    grating_animation.save_animation(width, height, 200, 90, 4, 'media\\Sin90.ani')
+    grating_animation.save_animation(width, height, 200, 135, 4, 'media\\Sin135.ani')
+    grating_animation.save_animation(width, height, 200, 180, 4, 'media\\Sin180.ani')
+    grating_animation.save_animation(width, height, 200, 225, 4, 'media\\Sin225.ani')
+    grating_animation.save_animation(width, height, 200, 270, 4, 'media\\Sin270.ani')
+    grating_animation.save_animation(width, height, 200, 315, 4, 'media\\Sin315.ani')
+    grating_animation.save_animation(width, height, 200, 360, 4, 'media\\Sin360.ani')
 
 
 def run():
@@ -116,10 +107,10 @@ def run():
         print("pls connect") """
     width, height = 1366, 768
     make_animations(width, height)
-    right = grating_animation.from_GS(settings.globvar[0])
-    left = grating_animation.from_GS(settings.globvar[1])
+    right = grating_animation.from_GS("media\\" + settings.globvar[0])
+    left = grating_animation.from_GS("media\\" + settings.globvar[1])
     WIN = PlayerWindow((right, left), (width, height),
-                    fullscreen=True, screen_id=2)
+                       fullscreen=True, screen_id=2)
     pyglet.app.run()
 
 

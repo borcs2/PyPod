@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
+#define M_PI acos(-1.0)
+
 double deg2rad(double deg){
     return deg*(M_PI/180.0);
 }
