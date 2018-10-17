@@ -3,7 +3,7 @@ import grating_animation
 import grating_frame
 import pyglet
 import time
-import PyPod
+import VisStimManager
 import sys
 import settings
 

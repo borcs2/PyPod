@@ -3,7 +3,7 @@ import grating_frame
 import pyglet
 import time
 from lj_input import LJInput
-import PyPod
+import VisStimManager
 import sys
 import settings
 

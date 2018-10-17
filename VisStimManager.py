@@ -13,14 +13,14 @@ from PySide2.QtWidgets import (QApplication, QComboBox, QDialog,
                                QHBoxLayout, QInputDialog, QLabel, QLineEdit,
                                QListWidget, QListWidgetItem, QMessageBox,
                                QProgressBar, QPushButton, QRadioButton,
-                               QSplashScreen, QVBoxLayout, QMenuBar, QMainWindow)
+                               QSplashScreen, QVBoxLayout, QMenuBar, QMainWindow, QMenu)
 
 import anim_player
 import settings
 from lj_input import LJInput
 
 
-class PyPod(QtWidgets.QWidget):
+class VisStimManager(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super().__init__()
 
@@ -45,6 +45,12 @@ class PyPod(QtWidgets.QWidget):
         self.NoGoPic = "media\\squareVert.png"
         self.GoArrow = "media\\rightRedArrow.png"
         self.NoGoArrow = "media\\rightRedArrow.png"
+
+        #CreateMenuBar
+        self.menuBar = QMenuBar()
+        self.toolsMenu = QMenu()
+        self.menuBar.addMenu(self.toolsMenu)
+
 
         # Create widgets
         self.saveParametersButton = QPushButton("Save actual parameters")
@@ -420,7 +426,7 @@ if __name__ == '__main__':
     progressBar.setMaximum(10)
     progressBar.setGeometry(0, splashimg.height() - 15, splashimg.width(), 15)
     splash.show()
-    splash.showMessage("<h1><font color='black'>Femto PyPod</font></h1>")
+    splash.showMessage("<h1><font color='black'>Femto VisStimManager</font></h1>")
 
     for i in range(1, 11):
         progressBar.setValue(i)
@@ -432,11 +438,11 @@ if __name__ == '__main__':
 
     # Create the Qt Application
     settings.init()
-    window = PyPod()
+    window = VisStimManager()
     window.setWindowIcon(QIcon("icon.ico"))
 
     # Create and show the form
-    window.setWindowTitle("VisGoNoGo")
+    window.setWindowTitle("VisStimManager")
     window.resize(250, 150)
     window.show()
     splash.finish(window)
