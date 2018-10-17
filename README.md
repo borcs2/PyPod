@@ -1,1 +1,1 @@
-# PyPod
+# VisStimManager
