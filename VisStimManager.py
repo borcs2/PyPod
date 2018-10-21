@@ -13,12 +13,25 @@ from PySide2.QtWidgets import (QApplication, QComboBox, QDialog,
                                QHBoxLayout, QInputDialog, QLabel, QLineEdit,
                                QListWidget, QListWidgetItem, QMessageBox,
                                QProgressBar, QPushButton, QRadioButton,
-                               QSplashScreen, QVBoxLayout, QMenuBar, QMainWindow, QMenu)
+                               QSplashScreen, QVBoxLayout, QMenuBar, QMainWindow, QMenu, QAction)
 
 import anim_player
 import settings
 from lj_input import LJInput
+class MainWindow(QMainWindow):
+    def __init__(self, parent=None):
+        super(MainWindow, self).__init__()
+        cent = VisStimManager()
+        self.setCentralWidget(cent)
+        
+        #CreateMenuBar
+        bar = self.menuBar()
+        
+        tools = bar.addMenu("Tools")
+        tools.addAction("test")
 
+
+        self.show()
 
 class VisStimManager(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -45,12 +58,6 @@ class VisStimManager(QtWidgets.QWidget):
         self.NoGoPic = "media\\squareVert.png"
         self.GoArrow = "media\\rightRedArrow.png"
         self.NoGoArrow = "media\\rightRedArrow.png"
-
-        #CreateMenuBar
-        self.menuBar = QMenuBar()
-        self.toolsMenu = QMenu()
-        self.menuBar.addMenu(self.toolsMenu)
-
 
         # Create widgets
         self.saveParametersButton = QPushButton("Save actual parameters")
@@ -438,7 +445,7 @@ if __name__ == '__main__':
 
     # Create the Qt Application
     settings.init()
-    window = VisStimManager()
+    window = MainWindow()
     window.setWindowIcon(QIcon("icon.ico"))
 
     # Create and show the form
