@@ -121,8 +121,8 @@ def closeByGui():
 if __name__ == '__main__':
     width, height = 1366, 768
     #make_animations(width, height)
-    right = grating_animation.from_GS('Square0.ani')
-    left = grating_animation.from_GS('Square180.ani')
+    right = grating_animation.from_GS('media\\Square0.ani')
+    left = grating_animation.from_GS('media\\Square180.ani')
     WIN = PlayerWindow((right, left), (width, height),
                        fullscreen=True,     screen_id=2)
     pyglet.app.run()
