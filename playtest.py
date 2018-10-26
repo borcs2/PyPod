@@ -81,26 +81,22 @@ class PlayerWindow(pyglet.window.Window):
 
 
 def make_animations(width, height):
-    grating_animation.save_animation(width, height, 768, 0, 32, 'Square0_fast.ani')
-    grating_animation.save_animation(width, height, 768, 45, 32, 'Square45_fast.ani')
-    grating_animation.save_animation(width, height, 768, 90, 32, 'Square90_fast.ani')
-    grating_animation.save_animation(width, height, 768, 135, 32, 'Square135_fast.ani')
-    grating_animation.save_animation(width, height, 768, 180, 32, 'Square180_fast.ani')
-    grating_animation.save_animation(width, height, 768, 225, 32, 'Square225_fast.ani')
-    grating_animation.save_animation(width, height, 768, 270, 32, 'Square270_fast.ani')
-    grating_animation.save_animation(width, height, 768, 315, 32, 'Square315_fast.ani')
-    grating_animation.save_animation(width, height, 768, 360, 32, 'Square360_fast.ani')
+    grating_animation.save_animation(width, height, 768, 0, 32, 'Square0.ani')
+    grating_animation.save_animation(width, height, 768, 45, 32, 'Square45.ani')
+    grating_animation.save_animation(width, height, 768, 90, 32, 'Square90.ani')
+    grating_animation.save_animation(width, height, 768, 135, 32, 'Square135.ani')
+    grating_animation.save_animation(width, height, 768, 180, 32, 'Square180.ani')
+    grating_animation.save_animation(width, height, 768, 225, 32, 'Square225.ani')
+    grating_animation.save_animation(width, height, 768, 270, 32, 'Square270.ani')
+    grating_animation.save_animation(width, height, 768, 315, 32, 'Square315.ani')
+    grating_animation.save_animation(width, height, 768, 360, 32, 'Square360.ani')
 
 
 def run():
-    """ try:
-        x = LJInput(silent=False)
-    except:
-        print("pls connect") """
     width, height = 1366, 768
-    make_animations(width, height)
-    right = grating_animation.from_GS(settings.globvar[0])
-    left = grating_animation.from_GS(settings.globvar[1])
+    #make_animations(width, height)
+    right = grating_animation.from_GS("media\\" + settings.globvar[0])
+    left = grating_animation.from_GS("media\\" + settings.globvar[1])
     WIN = PlayerWindow((right, left), (width, height),
                     fullscreen=True, screen_id=0)
     pyglet.app.run()

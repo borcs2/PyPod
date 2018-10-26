@@ -101,12 +101,8 @@ def make_animations(width, height):
 
 
 def run():
-    """ try:
-        x = LJInput(silent=False)
-    except:
-        print("pls connect") """
     width, height = 1366, 768
-    make_animations(width, height)
+    #make_animations(width, height)
     right = grating_animation.from_GS("media\\" + settings.globvar[0])
     left = grating_animation.from_GS("media\\" + settings.globvar[1])
     WIN = PlayerWindow((right, left), (width, height),

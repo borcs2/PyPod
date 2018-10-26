@@ -12,29 +12,23 @@ from PySide2.QtWidgets import (QApplication, QComboBox, QDialog,
                                QDoubleSpinBox, QGridLayout, QGroupBox,
                                QHBoxLayout, QInputDialog, QLabel, QLineEdit,
                                QListWidget, QListWidgetItem, QMessageBox,
-                               QProgressBar, QPushButton, QRadioButton,
+                               QProgressBar, QPushButton, QRadioButton, QCheckBox,
                                QSplashScreen, QVBoxLayout, QMenuBar, QMainWindow, QMenu, QAction)
 
 import anim_player
+import playtest
 import settings
 from lj_input import LJInput
+
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__()
-        cent = VisStimManager()
-        self.setCentralWidget(cent)
+        self.cent = VisStimManager()
+        self.setCentralWidget(self.cent)
         
-        #CreateMenuBar
-        bar = self.menuBar()
-        
-        tools = bar.addMenu("Tools")
-        tools.addAction("test")
-
-
-        self.show()
 
 class VisStimManager(QtWidgets.QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, parent=MainWindow):
         super().__init__()
 
         # Create layouts
@@ -98,6 +92,8 @@ class VisStimManager(QtWidgets.QWidget):
         self.noGoCurrentImage.setPixmap(
             QPixmap(self.NoGoPic).scaled(50, 50, QtCore.Qt.KeepAspectRatio))
 
+        self.testMode = QCheckBox("TestMode", self)
+        
         # Widget settings
         self.goRadioSquare.setChecked(True)
         self.noGoRadioSquare.setChecked(True)
@@ -146,6 +142,7 @@ class VisStimManager(QtWidgets.QWidget):
         layout.addWidget(GoWithRadios)
         layout.addWidget(NoGoWithGoRadios)
         layout.addWidget(paramBox)
+        layout.addWidget(self.testMode)
         layout.addWidget(self.startButton)
         layout.addWidget(self.stopButton)
         self.setLayout(layout)
@@ -331,8 +328,10 @@ class VisStimManager(QtWidgets.QWidget):
             settings.globvar.append(noGoWtype.lower() + "InvDiag.png")
 
         # print(settings.globvar)
-        anim_player.run()
-
+        if (self.testMode.isChecked()):
+            playtest.run()
+        else:
+            anim_player.run()
 
 class LoadDialog(QtWidgets.QDialog):
     def __init__(self, parent=None):
